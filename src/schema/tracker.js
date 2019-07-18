@@ -6,10 +6,23 @@ export default gql`
     tracker(id: ID!): Tracker
   }
 
+  extend type Mutation {
+    createTracker(serial: String!): Tracker!
+    updateTracker(
+      serial: String!
+      latitude: String!
+      longitude: String!
+      battery: String!
+    ): Tracker!
+    deleteTracker(id: ID!): Tracker!
+  }
+
   type Tracker {
     id: ID!
-    longitude: String!
-    latitude: String!
+    serial: String!
+    longitude: String
+    latitude: String
+    battery: Float
     asset: Asset
   }
 `
