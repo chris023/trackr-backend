@@ -8,6 +8,21 @@ export default {
     },
   },
 
+  Mutation: {
+    createAsset: async (parent, { identifier, type }, { models }) => {
+      const asset = await models.Asset.create({
+        identifier,
+        type,
+      })
+
+      return asset
+    },
+
+    deleteAsset: async (parent, { id }, { models }) => {
+      return await models.Asset.destroy({ where: { id } })
+    },
+  },
+
   Asset: {
     tracker: async (tracker, args, { models }) => {
       return await models.Tracker.findAll({
