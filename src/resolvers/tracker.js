@@ -33,15 +33,13 @@ export default {
     },
   },
 
-  Asset: {
-    tracker: async (tracker, args, { models }) => {
-      return (
-        (await models.Tracker.findOne({
-          where: {
-            trackerId: tracker.id,
-          },
-        })) || null
-      )
+  Tracker: {
+    asset: async (tracker, args, { models }) => {
+      return await models.Asset.findOne({
+        where: {
+          trackerId: tracker.id,
+        },
+      })
     },
   },
 }
