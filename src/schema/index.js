@@ -1,8 +1,9 @@
 import { gql } from 'apollo-server-express'
 
 import assetSchema from './asset'
-import userSchema from './user'
 import messageSchema from './message'
+import trackerSchema from './tracker'
+import userSchema from './user'
 
 const linkSchema = gql`
   scalar Date
@@ -20,4 +21,10 @@ const linkSchema = gql`
   }
 `
 
-export default [linkSchema, assetSchema, userSchema, messageSchema]
+export default [
+  linkSchema,
+  assetSchema,
+  messageSchema,
+  trackerSchema,
+  userSchema,
+]

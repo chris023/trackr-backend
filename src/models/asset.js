@@ -1,15 +1,15 @@
 const asset = (sequelize, DataTypes) => {
   const Asset = sequelize.define('asset', {
     type: {
-      type: DataTypes.Array(DataTypes.ENUM('crate')),
+      type: DataTypes.ARRAY(DataTypes.ENUM('crate')),
     },
-    id: {
+    identifier: {
       type: DataTypes.STRING,
     },
   })
 
   Asset.associate = models => {
-    Asset.hasOne(models.tracker)
+    Asset.hasOne(models.Tracker)
   }
 
   return Asset

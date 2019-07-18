@@ -8,8 +8,6 @@ export default {
     },
   },
 
-  Mutation: {},
-
   Asset: {
     tracker: async (tracker, args, { models }) => {
       return await models.Tracker.findAll({

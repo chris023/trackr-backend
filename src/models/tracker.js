@@ -1,8 +1,5 @@
 const tracker = (sequelize, DataTypes) => {
   const Tracker = sequelize.define('tracker', {
-    history: {
-      type: DataTypes.array,
-    },
     latitude: {
       type: DataTypes.DOUBLE,
     },
@@ -12,7 +9,7 @@ const tracker = (sequelize, DataTypes) => {
   })
 
   Tracker.associate = models => {
-    Tracker.belongsTo(models.asset)
+    Tracker.belongsTo(models.Asset)
   }
 
   return Tracker
