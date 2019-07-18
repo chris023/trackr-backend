@@ -9,11 +9,22 @@ export default {
   },
 
   Mutation: {
-    createAsset: async (parent, { identifier, type }, { models }) => {
+    createAsset: async (parent, { serial, identifier, type }, { models }) => {
       const asset = await models.Asset.create({
         identifier,
         type,
       })
+
+      if (serial) {
+        const tracker =
+          (await models.Tracker.findOne({ where: { serial } })) ||
+          (await models.Tracker.create({ serial }))
+
+        await models.Asset.upsert(
+          { id: asset.dataValues.id, trackerId: tracker.dataValues.id },
+          { returning: true },
+        )
+      }
 
       return asset
     },

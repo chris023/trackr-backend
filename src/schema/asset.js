@@ -7,7 +7,7 @@ export default gql`
   }
 
   extend type Mutation {
-    createAsset(type: String!, identifier: String!): Asset!
+    createAsset(type: String!, identifier: String!, serial: String): Asset!
     deleteAsset(id: ID!): Boolean!
     addTracker(id: ID!, serial: String!): Asset!
   }
