@@ -1,10 +1,10 @@
 export default {
   Query: {
     assets: async (parent, args, { models }) => {
-      return await models.Assets.findAll()
+      return await models.Asset.findAll()
     },
     asset: async (parent, { id }, { models }) => {
-      return await models.Assets.findById(id)
+      return await models.Asset.findById(id)
     },
   },
 
