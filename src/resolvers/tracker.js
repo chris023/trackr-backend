@@ -37,7 +37,7 @@ export default {
     asset: async (tracker, args, { models }) => {
       return await models.Asset.findOne({
         where: {
-          trackerId: tracker.id,
+          id: tracker.assetId,
         },
       })
     },
