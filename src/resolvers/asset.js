@@ -20,8 +20,8 @@ export default {
           (await models.Tracker.findOne({ where: { serial } })) ||
           (await models.Tracker.create({ serial }))
 
-        await models.Asset.upsert(
-          { id: asset.dataValues.id, trackerId: tracker.dataValues.id },
+        await models.Tracker.upsert(
+          { id: tracker.dataValues.id, assetId: asset.dataValues.id },
           { returning: true },
         )
       }
@@ -33,15 +33,15 @@ export default {
       return await models.Asset.destroy({ where: { id } })
     },
 
-    addTracker: async (parent, { id, serial }, { models }) => {
+    addTracker: async (asset, { id, serial }, { models }) => {
       const tracker =
         (await models.Tracker.findOne({ where: { serial } })) ||
         (await models.Tracker.create({
           serial,
         }))
 
-      await models.Asset.upsert(
-        { id, trackerId: tracker.dataValues.id },
+      await models.Tracker.upsert(
+        { assetId: asset.id, id: tracker.dataValues.id },
         { returning: true },
       )
 
@@ -51,11 +51,10 @@ export default {
 
   Asset: {
     tracker: async (asset, args, { models }) => {
-      console.log('here')
       return (
         (await models.Tracker.findOne({
           where: {
-            id: asset.id,
+            assetId: asset.id,
           },
         })) || null
       )
