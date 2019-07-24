@@ -1,7 +1,7 @@
 import uuid from 'uuidv4'
 
 const createTrackers = async models => {
-  const numTrackersToGenerate = 25
+  const numTrackersToGenerate = 100
 
   for (let i = 0; i < numTrackersToGenerate; i++) {
     await models.Tracker.create({
