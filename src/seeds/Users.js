@@ -1,4 +1,4 @@
-const createUsersWithMessages = async date => {
+const createUsersWithMessages = async (date, models) => {
   await models.User.create(
     {
       username: 'rwieruch',
