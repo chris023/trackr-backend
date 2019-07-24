@@ -79,10 +79,10 @@ const isTest = !!process.env.TEST_DATABASE
 const isProduction = !!process.env.DATABASE_URL
 const port = process.env.PORT || 8000
 
-const clearDatabase = true && (isTest || isProduction)
+const clearDatabase = false && (isTest || isProduction)
 
 sequelize.sync({ force: clearDatabase }).then(async () => {
-  if (isTest || isProduction) seedData()
+  // if (isTest || isProduction) seedData(models)
 
   httpServer.listen({ port }, () => {
     console.log(`Apollo Server on http://localhost:${port}/graphql`)
