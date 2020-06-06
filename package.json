@@ -22,7 +22,7 @@
     "prettier": "1.16.0"
   },
   "dependencies": {
-    "apollo-server": "^2.5.0",
+    "apollo-server": "^2.14.2",
     "apollo-server-express": "^2.5.0",
     "aws-sdk": "^2.496.0",
     "bcrypt": "^3.0.6",
